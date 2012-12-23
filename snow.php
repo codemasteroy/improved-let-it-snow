@@ -1,25 +1,23 @@
 <?php
 /*
-Plugin Name: Let It Snow!
+Plugin Name: Improved Let It Snow!
 Plugin URI: http://aentan.com/work/let-it-snow/
-Description: Snow on your Wordpress Blog based on the DHTML Snowstorm script by <cite><a href="http://www.schillmania.com/projects/snowstorm/" title="DHTML Snowstorm">Scott Schiller</a>.</cite>
-Version: 3.0
-Author: Aen Tan
-Author URI: http://aentan.com/
+Description: Snow on your Wordpress Blog based on the DHTML Snowstorm script by <cite><a href="http://www.schillmania.com/projects/snowstorm/" title="DHTML Snowstorm">Scott Schiller</a>.</cite> with improvements by S H Mohanjith
+Version: 1.0
+Author: S H Mohanjith (Code Master Oy)
+Author URI: http://codemaster.fi/
 */
-function snow_options() {
-	add_menu_page('Let It Snow!', 'Let It Snow!', 8, basename(__FILE__), 'snow_options_page');
-	add_submenu_page(basename(__FILE__), 'Settings', 'Settings', 8, basename(__FILE__), 'snow_options_page');
+function improved_snow_options() {
+	add_options_page('Improved Let It Snow! Settings', 'Improved Let It Snow!', 'manage_options', 'improved_snow_options', 'improved_snow_options_page');
 }
-?>
-<?php function snow_options_page() { ?>
 
+function improved_snow_options_page() {
+?>
 <div class="wrap">
     
-    <div class="icon32" id="icon-options-general"><br/></div><h2>Settings for Let It Snow!</h2>
-    
     <p>Like Let It Snow?, you should follow me on Twitter <a href="http://twitter.com/Aen"><em>here</em></a></p>
-
+    <div class="icon32" id="icon-options-general"><br/></div><h2>Settings for Improved Let It Snow!</h2>
+    
     <form method="post" action="options.php">
 
 	    <?php
@@ -169,10 +167,11 @@ function snow_options() {
     <p>Like Let It Snow?, you should follow me on Twitter <a href="http://twitter.com/Aen"><em>here</em></a></p>
 
 </div>
-<?php } ?>
 <?php
+}
+
 // On access of the admin page, register these variables (required for WP 2.7 & newer)
-function snow_init(){
+function improved_snow_init(){
     if(function_exists('register_setting')){
     	register_setting('snow-options', 'animationInterval');
     	register_setting('snow-options', 'flakeBottom');
@@ -194,36 +193,36 @@ function snow_init(){
 
 // Only all the admin options if the user is an admin
 if(is_admin()){
-    add_action('admin_menu', 'snow_options');
-    add_action('admin_init', 'snow_init');
+    add_action('admin_menu', 'improved_snow_options');
+    add_action('admin_init', 'improved_snow_init');
 }
 
 //Set the default options when the plugin is activated
-function snow_activate(){
+function improved_snow_activate(){
 	add_option('animationInterval', 33);
     add_option('flakeBottom', 'null');
     add_option('flakesMax', 128);
     add_option('flakesMaxActive', 64);  
-    add_option('followMouse', true);
-    add_option('freezeOnBlur', true);  
+    add_option('followMouse', 1);
+    add_option('freezeOnBlur', 1);  
     add_option('snowColor', '#fff');
     add_option('snowCharacter', '&bull;');
-    add_option('snowStick', true);
+    add_option('snowStick', 0);
     add_option('targetElement', 'null');
-    add_option('useMeltEffect', true);
-    add_option('useTwinkleEffect', true);
-    add_option('usePositionFixed', false);
+    add_option('useMeltEffect', 1);
+    add_option('useTwinkleEffect', 1);
+    add_option('usePositionFixed', 0);
     add_option('vMaxX', 8);
     add_option('vMaxY', 5);
 }
 
-register_activation_hook( __FILE__, 'snow_activate' );
+register_activation_hook( __FILE__, 'improved_snow_activate' );
 
-function let_it_snow() {
+function improved_let_it_snow() {
 	// Path for snow images
 	$snowPath = get_option('siteurl').'/wp-content/plugins/let-it-snow/';
 	
-	$snowJS = '<script type="text/javascript" src="'.$snowPath.'script/snowstorm-min.js"></script>'."\n";
+	$snowJS = '<script type="text/javascript" src="'.$snowPath.'script/snowstorm-min.js?2012122202"></script>'."\n";
 
 	$snowJS .=	'<script type="text/javascript">
 sitePath = "'.$snowPath.'";
@@ -231,20 +230,20 @@ snowStorm.animationInterval = '.get_option('animationInterval').';
 snowStorm.flakeBottom = '.get_option('flakeBottom').';
 snowStorm.flakesMax = '.get_option('flakesMax').';
 snowStorm.flakesMaxActive = '.get_option('flakesMaxActive').';
-snowStorm.followMouse = '.get_option('followMouse').';
-snowStorm.freezeOnBlur = '.get_option('freezeOnBlur').';
-snowStorm.snowColor = "'.get_option('snowColor').'";
+snowStorm.followMouse = '.(get_option('followMouse') == 1?1:0).';
+snowStorm.freezeOnBlur = '.(get_option('freezeOnBlur') == 1?1:0).';
+snowStorm.snowColor = "'.(get_option('snowColor', '#fff') == 0?'#fff':get_option('snowColor', '#fff')).'";
 snowStorm.snowCharacter = "'.get_option('snowCharacter').'";
-snowStorm.snowStick = '.get_option('snowStick').';
+snowStorm.snowStick = '.(get_option('snowStick') == 1?1:0).';
 snowStorm.targetElement = '.get_option('targetElement').';
-snowStorm.useMeltEffect = '.get_option('useMeltEffect').';
-snowStorm.useTwinkleEffect = '.get_option('useTwinkleEffect').';
-snowStorm.usePositionFixed = '.get_option('usePositionFixed').';
-snowStorm.vMaxX = '.get_option('vMaxX').';
-snowStorm.vMaxY = '.get_option('vMaxY').';
+snowStorm.useMeltEffect = '.(get_option('useMeltEffect') == 1?1:0).';
+snowStorm.useTwinkleEffect = '.(get_option('useTwinkleEffect') == 1?1:0).';
+snowStorm.usePositionFixed = '.(get_option('usePositionFixed') == 1?1:0).';
+snowStorm.vMaxX = '.(get_option('vMaxX', 8) == 0?8:get_option('vMaxX', 8)).';
+snowStorm.vMaxY = '.(get_option('vMaxY', 5) == 0?5:get_option('vMaxY', 5)).';
 </script>'."\n";
 	
 	print($snowJS);
 }
-add_action('wp_head', 'let_it_snow');
-?>
+
+add_action('wp_head', 'improved_let_it_snow');
