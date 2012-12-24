@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Improved Let It Snow! ===
 Contributors: S H Mohanjith (Code Master Oy), Aen
 Donate link: http://twitter.com/codemasteroy
 Tags: snow, christmas, xmas, flakes, aen
