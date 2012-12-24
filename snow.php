@@ -3,23 +3,23 @@
 Plugin Name: Improved Let It Snow!
 Plugin URI: http://aentan.com/work/let-it-snow/
 Description: Snow on your Wordpress Blog based on the DHTML Snowstorm script by <cite><a href="http://www.schillmania.com/projects/snowstorm/" title="DHTML Snowstorm">Scott Schiller</a>.</cite> with improvements by S H Mohanjith
-Version: 1.0
+Version: 3.5
 Author: S H Mohanjith (Code Master Oy)
 Author URI: http://codemaster.fi/
 */
+
 function improved_snow_options() {
-	add_options_page('Improved Let It Snow! Settings', 'Improved Let It Snow!', 'manage_options', 'improved_snow_options', 'improved_snow_options_page');
+	add_options_page(__('Improved Let It Snow! Settings', 'improved-let-it-snow'), __('Improved Let It Snow!', 'improved-let-it-snow'), 'manage_options', 'improved_snow_options', 'improved_snow_options_page');
 }
 
 function improved_snow_options_page() {
 ?>
 <div class="wrap">
     
-    <p>Like Let It Snow?, you should follow me on Twitter <a href="http://twitter.com/Aen"><em>here</em></a></p>
+    <p><?php echo sprintf(__('Like Improved Let It Snow?, you should follow us on Twitter <a href="%s"><em>here</em></a>', 'improved-let-it-snow'), 'http://twitter.com/codemasteroy'); ?></p>
     <div class="icon32" id="icon-options-general"><br/></div><h2>Settings for Improved Let It Snow!</h2>
     
     <form method="post" action="options.php">
-
 	    <?php
 	        // New way of setting the fields, for WP 2.7 and newer
 	        if(function_exists('settings_fields')){
@@ -35,136 +35,136 @@ function improved_snow_options_page() {
 	
 		<table class="form-table">
 			<tr valign="top">
-				<th scope="row"><label for="animationInterval">Animation rate</label></th>
+				<th scope="row"><label for="animationInterval"><?php _e('Animation rate', 'improved-let-it-snow'); ?></label></th>
 				<td>
 					<input type="text" name="animationInterval" id="animationInterval" value="<?php echo get_option('animationInterval'); ?>" size="5" />
-					<span class="description">Lesser (e.g. 20) = fast + smooth, but high CPU use. More (e.g. 50) = more conservative, but slower. Default is 33.</span>
+					<span class="description"><?php _e('Lesser (e.g. 20) = fast + smooth, but high CPU use. More (e.g. 50) = more conservative, but slower. Default is 33.', 'improved-let-it-snow'); ?></span>
 				</td>
 			</tr>
 			<tr valign="top">
-				<th scope="row"><label for="flakeBottom">Limit flakes at the bottom</label></th>
+				<th scope="row"><label for="flakeBottom"><?php _e('Limit flakes at the bottom', 'improved-let-it-snow'); ?></label></th>
 				<td>
 					<input type="text" name="flakeBottom" id="flakeBottom" value="<?php echo get_option('flakeBottom'); ?>" size="5" />
-					<span class="description">Limits the "floor" (pixels) of the snow. If unspecified, snow will "stick" to the bottom of the browser window and persists through browser resize/scrolling.</span>
+					<span class="description"><?php _e('Limits the "floor" (pixels) of the snow. If unspecified, snow will "stick" to the bottom of the browser window and persists through browser resize/scrolling.', 'improved-let-it-snow'); ?></span>
 				</td>
 			</tr>
 			<tr valign="top">
-				<th scope="row"><label for="flakesMax">Maximum number of flakes</label></th>
+				<th scope="row"><label for="flakesMax"><?php _e('Maximum number of flakes', 'improved-let-it-snow'); ?></label></th>
 				<td>
 					<input type="text" name="flakesMax" id="flakesMax" value="<?php echo get_option('flakesMax'); ?>" size="5" />
-					<span class="description">Sets the maximum number of snowflakes that can exist on the screen at any given time.</span>
+					<span class="description"><?php _e('Sets the maximum number of snowflakes that can exist on the screen at any given time.', 'improved-let-it-snow'); ?></span>
 				</td>
 			</tr>
 			<tr valign="top">
-				<th scope="row"><label for="flakesMaxActive">Maximum number of active flakes</label></th>
+				<th scope="row"><label for="flakesMaxActive"><?php _e('Maximum number of active flakes', 'improved-let-it-snow'); ?></label></th>
 				<td>
 					<input type="text" name="flakesMaxActive" id="flakesMaxActive" value="<?php echo get_option('flakesMaxActive'); ?>" size="5" />
-					<span class="description">Sets the limit of "falling" snowflakes (ie. moving on the screen, thus considered to be active.)</span>
+					<span class="description"><?php _e('Sets the limit of "falling" snowflakes (ie. moving on the screen, thus considered to be active.)', 'improved-let-it-snow'); ?></span>
 				</td>
 			</tr>
 			<tr valign="top">
-				<th scope="row"><label for="followMouse">Follow mouse?</label></th>
+				<th scope="row"><label for="followMouse"><?php _e('Follow mouse?', 'improved-let-it-snow'); ?></label></th>
 				<td>
 					<select name="followMouse" id="followMouse">
-                		<option <?php if (get_option('followMouse') == 'true') echo 'selected="selected"'; ?> value="true">Yes</option>
-                		<option <?php if (get_option('followMouse') == 'false') echo 'selected="selected"'; ?> value="false">No</option> 
+                		<option <?php if (get_option('followMouse') == 'true') echo 'selected="selected"'; ?> value="true"><?php _e('Yes', 'improved-let-it-snow'); ?></option>
+                		<option <?php if (get_option('followMouse') == 'false') echo 'selected="selected"'; ?> value="false"><?php _e('No', 'improved-let-it-snow'); ?></option> 
                 	</select>
-                	<span class="description">Allows snow to move dynamically with the "wind", relative to the mouse's X (left/right) coordinates.</span>
+                	<span class="description"><?php _e('Allows snow to move dynamically with the "wind", relative to the mouse\'s X (left/right) coordinates.', 'improved-let-it-snow'); ?></span>
 				</td>
 			</tr>
 			<tr valign="top">
-				<th scope="row"><label for="freezeOnBlur">Freeze on blur?</label></th>
+				<th scope="row"><label for="freezeOnBlur"><?php _e('Freeze on blur?', 'improved-let-it-snow'); ?></label></th>
 				<td>
 					<select name="freezeOnBlur" id="freezeOnBlur">
-                		<option <?php if (get_option('freezeOnBlur') == 'true') echo 'selected="selected"'; ?> value="true">Yes</option>
-                		<option <?php if (get_option('freezeOnBlur') == 'false') echo 'selected="selected"'; ?> value="false">No</option> 
+                		<option <?php if (get_option('freezeOnBlur') == 'true') echo 'selected="selected"'; ?> value="true"><?php _e('Yes', 'improved-let-it-snow'); ?></option>
+                		<option <?php if (get_option('freezeOnBlur') == 'false') echo 'selected="selected"'; ?> value="false"><?php _e('No', 'improved-let-it-snow'); ?></option> 
                 	</select>
-                	<span class="description">Stops the snow effect when the browser window goes out of focus, eg., user is in another tab. Saves CPU, nicer to user.</span>
+                	<span class="description"><?php _e('Stops the snow effect when the browser window goes out of focus, eg., user is in another tab. Saves CPU, nicer to user.', 'improved-let-it-snow'); ?></span>
 				</td>
 			</tr>
 			<tr valign="top">
-				<th scope="row"><label for="snowColor">Snow color</label></th>
+				<th scope="row"><label for="snowColor"><?php _e('Snow color', 'improved-let-it-snow'); ?></label></th>
 				<td>
 					<input type="text" name="snowColor" id="snowColor" value="<?php echo get_option('snowColor'); ?>" size="7" />
-					<span class="description">Don't eat (or use?) yellow snow.</span>
+					<span class="description"><?php _e('Don\'t eat (or use?) yellow snow.', 'improved-let-it-snow'); ?></span>
 				</td>
 			</tr>
 			<tr valign="top">
-				<th scope="row"><label for="snowCharacter">Snow character</label></th>
+				<th scope="row"><label for="snowCharacter"><?php _e('Snow character', 'improved-let-it-snow'); ?></label></th>
 				<td>
 					<input type="text" name="snowCharacter" id="snowCharacter" value="<?php echo get_option('snowCharacter'); ?>" size="1" />
-					<span class="description">&amp;bull; (&bull;) = bullet. &amp;middot; entity (&middot;) is not used as it's square on some systems etc. Changing this may result in cropping of the character and may require flakeWidth/flakeHeight changes, so be careful.</span>
+					<span class="description"><?php _e('&amp;bull; (&bull;) = bullet. &amp;middot; entity (&middot;) is not used as it\'s square on some systems etc. Changing this may result in cropping of the character and may require flakeWidth/flakeHeight changes, so be careful.', 'improved-let-it-snow'); ?></span>
 				</td>
 			</tr>
 			<tr valign="top">
-				<th scope="row"><label for="snowStick">Sticky snow?</label></th>
+				<th scope="row"><label for="snowStick"><?php _e('Sticky snow?', 'improved-let-it-snow'); ?></label></th>
 				<td>
 					<select name="snowStick" id="snowStick">
-                		<option <?php if (get_option('snowStick') == 'true') echo 'selected="selected"'; ?> value="true">Yes</option>
-                		<option <?php if (get_option('snowStick') == 'false') echo 'selected="selected"'; ?> value="false">No</option> 
+                		<option <?php if (get_option('snowStick') == 'true') echo 'selected="selected"'; ?> value="true"><?php _e('Yes', 'improved-let-it-snow'); ?></option>
+                		<option <?php if (get_option('snowStick') == 'false') echo 'selected="selected"'; ?> value="false"><?php _e('No', 'improved-let-it-snow'); ?></option> 
                 	</select>
-                	<span class="description">Allows the snow to "stick" to the bottom of the window. When off, snow will never sit at the bottom.</span>
+                	<span class="description"><?php _e('Allows the snow to "stick" to the bottom of the window. When off, snow will never sit at the bottom.', 'improved-let-it-snow'); ?></span>
 				</td>
 			</tr>
 			<tr valign="top">
-				<th scope="row"><label for="targetElement">Target element</label></th>
+				<th scope="row"><label for="targetElement"><?php _e('Target element', 'improved-let-it-snow'); ?></label></th>
 				<td>
 					<input type="text" name="targetElement" id="targetElement" value="<?php echo get_option('targetElement'); ?>" size="10" />
-					<span class="description">Element which snow will be appended to (default: document body) - can be an element ID string eg. 'myDiv', or a DOM node reference.</span>
+					<span class="description"><?php _e('Element which snow will be appended to (default: document body) - can be an element ID string eg. \'myDiv\', or a DOM node reference.', 'improved-let-it-snow'); ?></span>
 				</td>
 			</tr>
 			<tr valign="top">
-				<th scope="row"><label for="useMeltEffect">Use melt effect?</label></th>
+				<th scope="row"><label for="useMeltEffect"><?php _e('Use melt effect?', 'improved-let-it-snow'); ?></label></th>
 				<td>
 					<select name="useMeltEffect" id="useMeltEffect">
-                		<option <?php if (get_option('useMeltEffect') == 'true') echo 'selected="selected"'; ?> value="true">Yes</option>
-                		<option <?php if (get_option('useMeltEffect') == 'false') echo 'selected="selected"'; ?> value="false">No</option> 
+                		<option <?php if (get_option('useMeltEffect') == 'true') echo 'selected="selected"'; ?> value="true"><?php _e('Yes', 'improved-let-it-snow'); ?></option>
+                		<option <?php if (get_option('useMeltEffect') == 'false') echo 'selected="selected"'; ?> value="false"><?php _e('No', 'improved-let-it-snow'); ?></option> 
                 	</select>
-                	<span class="description">When recycling fallen snow (or rarely, when falling), have it "melt" and fade out if browser supports it.</span>
+                	<span class="description"><?php _e('When recycling fallen snow (or rarely, when falling), have it "melt" and fade out if browser supports it.', 'improved-let-it-snow'); ?></span>
 				</td>
 			</tr>
 			<tr valign="top">
-				<th scope="row"><label for="useTwinkleEffect">Use twinkle effect?</label></th>
+				<th scope="row"><label for="useTwinkleEffect"><?php _e('Use twinkle effect?', 'improved-let-it-snow'); ?></label></th>
 				<td>
 					<select name="useTwinkleEffect" id="useTwinkleEffect">
-                		<option <?php if (get_option('useTwinkleEffect') == 'true') echo 'selected="selected"'; ?> value="true">Yes</option>
-                		<option <?php if (get_option('useTwinkleEffect') == 'false') echo 'selected="selected"'; ?> value="false">No</option> 
+                		<option <?php if (get_option('useTwinkleEffect') == 'true') echo 'selected="selected"'; ?> value="true"><?php _e('Yes', 'improved-let-it-snow'); ?></option>
+                		<option <?php if (get_option('useTwinkleEffect') == 'false') echo 'selected="selected"'; ?> value="false"><?php _e('No', 'improved-let-it-snow'); ?></option> 
                 	</select>
-                	<span class="description">Allow snow to randomly "flicker" in and out of view while falling.</span>
+                	<span class="description"><?php _e('Allow snow to randomly "flicker" in and out of view while falling.', 'improved-let-it-snow'); ?></span>
 				</td>
 			</tr>
 			<tr valign="top">
-				<th scope="row"><label for="usePositionFixed">Use fixed position?</label></th>
+				<th scope="row"><label for="usePositionFixed"><?php _e('Use fixed position?', 'improved-let-it-snow'); ?></label></th>
 				<td>
 					<select name="usePositionFixed" id="usePositionFixed">
-                		<option <?php if (get_option('usePositionFixed') == 'true') echo 'selected="selected"'; ?> value="true">Yes</option>
-                		<option <?php if (get_option('usePositionFixed') == 'false') echo 'selected="selected"'; ?> value="false">No</option> 
+                		<option <?php if (get_option('usePositionFixed') == 'true') echo 'selected="selected"'; ?> value="true"><?php _e('Yes', 'improved-let-it-snow'); ?></option>
+                		<option <?php if (get_option('usePositionFixed') == 'false') echo 'selected="selected"'; ?> value="false"><?php _e('No', 'improved-let-it-snow'); ?></option> 
                 	</select>
-                	<span class="description">Yes = snow not affected by window scroll. may increase CPU load, disabled by default - if enabled, used only where supported.</span>
+                	<span class="description"><?php _e('Yes = snow not affected by window scroll. may increase CPU load, disabled by default - if enabled, used only where supported.', 'improved-let-it-snow'); ?></span>
 				</td>
 			</tr>
 			<tr valign="top">
-				<th scope="row"><label for="vMaxX">Snowfall maximum speed (horizontal)</label></th>
+				<th scope="row"><label for="vMaxX"><?php _e('Snowfall maximum speed (horizontal)', 'improved-let-it-snow'); ?></label></th>
 				<td>
 					<input type="text" name="vMaxX" id="vMaxX" value="<?php echo get_option('vMaxX'); ?>" size="5" />
-					<span class="description">Defines maximum X velocity for the storm; a random value in this range is selected for each snowflake.</span>
+					<span class="description"><?php _e('Defines maximum X velocity for the storm; a random value in this range is selected for each snowflake.', 'improved-let-it-snow'); ?></span>
 				</td>
 			</tr>
 			<tr valign="top">
-				<th scope="row"><label for="vMaxY">Snowfall maximum speed (vertical)</label></th>
+				<th scope="row"><label for="vMaxY"><?php _e('Snowfall maximum speed (vertical)', 'improved-let-it-snow'); ?></label></th>
 				<td>
 					<input type="text" name="vMaxY" id="vMaxY" value="<?php echo get_option('vMaxY'); ?>" size="5" />
-					<span class="description">Defines maximum Y velocity for the storm; a random value in this range is selected for each snowflake.</span>
+					<span class="description"><?php _e('Defines maximum Y velocity for the storm; a random value in this range is selected for each snowflake.', 'improved-let-it-snow'); ?></span>
 				</td>
 			</tr>
 		</table>
 		<p class="submit">
-            <input type="submit" name="Submit" value="<?php _e('Save Changes') ?>" class="button-primary" />
+            <input type="submit" name="Submit" value="<?php _e('Save Changes', 'improved-let-it-snow') ?>" class="button-primary" />
         </p>
 
     </form>
     
-    <p>Like Let It Snow?, you should follow me on Twitter <a href="http://twitter.com/Aen"><em>here</em></a></p>
+    <p><?php echo sprintf(__('Like Improved Let It Snow?, you should follow us on Twitter <a href="%s"><em>here</em></a>', 'improved-let-it-snow'), 'http://twitter.com/codemasteroy'); ?></p>
 
 </div>
 <?php
@@ -172,6 +172,9 @@ function improved_snow_options_page() {
 
 // On access of the admin page, register these variables (required for WP 2.7 & newer)
 function improved_snow_init(){
+	
+	load_plugin_textdomain('improved-let-it-snow', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+	
     if(function_exists('register_setting')){
     	register_setting('snow-options', 'animationInterval');
     	register_setting('snow-options', 'flakeBottom');
@@ -197,6 +200,8 @@ if(is_admin()){
     add_action('admin_init', 'improved_snow_init');
 }
 
+add_action('init', 'improved_snow_init');
+
 //Set the default options when the plugin is activated
 function improved_snow_activate(){
 	add_option('animationInterval', 33);
@@ -220,9 +225,9 @@ register_activation_hook( __FILE__, 'improved_snow_activate' );
 
 function improved_let_it_snow() {
 	// Path for snow images
-	$snowPath = get_option('siteurl').'/wp-content/plugins/let-it-snow/';
+	$snowPath = plugins_url('improved-let-it-snow');
 	
-	$snowJS = '<script type="text/javascript" src="'.$snowPath.'script/snowstorm-min.js?2012122202"></script>'."\n";
+	$snowJS = '<script type="text/javascript" src="'.$snowPath.'/script/snowstorm-min.js?2012122202"></script>'."\n";
 
 	$snowJS .=	'<script type="text/javascript">
 sitePath = "'.$snowPath.'";
@@ -246,4 +251,4 @@ snowStorm.vMaxY = '.(get_option('vMaxY', 5) == 0?5:get_option('vMaxY', 5)).';
 	print($snowJS);
 }
 
-add_action('wp_head', 'improved_let_it_snow');
+add_action('wp_footer', 'improved_let_it_snow');

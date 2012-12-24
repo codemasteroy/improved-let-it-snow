@@ -1,14 +1,18 @@
 === Plugin Name ===
-Contributors: Aen
-Donate link: http://twitter.com/Aen
+Contributors: S H Mohanjith (Code Master Oy), Aen
+Donate link: http://twitter.com/codemasteroy
 Tags: snow, christmas, xmas, flakes, aen
 Requires at least: 1.5
-Tested up to: 3.1
-Stable tag: 3.0
+Tested up to: 3.5
+Stable tag: 3.5
 
 All you need to do is upload the plugin folder to your plugin directory and activate to see falling snow on your blog.
 
 == Description ==
+
+**Update Dec 23, 2012**
+
+Updated snow falll script to work with Wibiya. Localized Settings Page. Moved the Settings Page under main Settings. Uses register script and enquescript.
 
 **Update Jan 30, 2011**
 
@@ -24,7 +28,7 @@ In 2007, WordPress.com introduced a [falling snow options](http://wordpress.com/
 
 == Installation ==
 
-1. upload the folder `let-it-snow` with its contents to `/wp-content/plugins/` directory
+1. upload the folder `improved-let-it-snow` with its contents to `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress Admin Panel
 1. Configure snowfall if you like, in the Let It Snow! settings page. That's it!
 
@@ -51,6 +55,7 @@ This plugin is written by [Aen Tan](http://aentan.com/).
 You should follow me on Twitter *[here](http://twitter.com/Aen)*.
 
 = Changelog =
+**3.5** [December 23, 2012] Updated snow fall script to work with Wibiya and localized settings page.
 **3.0** [January 30, 2011] Updated snow fall script and generally cleaned things up.
 **2.0** [November 07, 2009] Updated snow fall script and generally cleaned things up.
 **1.3** [December 27, 2007] Changed z-index of snow so it's on top of everything.
