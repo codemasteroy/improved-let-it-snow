@@ -171,11 +171,11 @@ function improved_snow_options_page() {
 }
 
 // On access of the admin page, register these variables (required for WP 2.7 & newer)
-function improved_snow_init(){
+function improved_snow_init() {
 	
 	load_plugin_textdomain('improved-let-it-snow', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	
-    if(function_exists('register_setting')){
+    if (function_exists('register_setting')){
     	register_setting('snow-options', 'animationInterval');
     	register_setting('snow-options', 'flakeBottom');
     	register_setting('snow-options', 'flakesMax');
@@ -194,16 +194,22 @@ function improved_snow_init(){
     }
 }
 
+function improved_snow_wp_enqueue_scripts() {
+	wp_register_script( "improved-let-it-snow", plugins_url('improved-let-it-snow/script/snowstorm-min.js'), array(), "3.5", true);
+	
+	wp_enqueue_script('improved-let-it-snow');     
+}
+
 // Only all the admin options if the user is an admin
-if(is_admin()){
+if (is_admin()) {
     add_action('admin_menu', 'improved_snow_options');
     add_action('admin_init', 'improved_snow_init');
 }
 
-add_action('init', 'improved_snow_init');
+add_action('wp_enqueue_scripts', 'improved_snow_wp_enqueue_scripts');
 
 //Set the default options when the plugin is activated
-function improved_snow_activate(){
+function improved_snow_activate() {
 	add_option('animationInterval', 33);
     add_option('flakeBottom', 'null');
     add_option('flakesMax', 128);
@@ -225,11 +231,9 @@ register_activation_hook( __FILE__, 'improved_snow_activate' );
 
 function improved_let_it_snow() {
 	// Path for snow images
-	$snowPath = plugins_url('improved-let-it-snow');
+	$snowPath = plugins_url('improved-let-it-snow/');
 	
-	$snowJS = '<script type="text/javascript" src="'.$snowPath.'/script/snowstorm-min.js?2012122202"></script>'."\n";
-
-	$snowJS .=	'<script type="text/javascript">
+	$snowJS =	'<script type="text/javascript">
 sitePath = "'.$snowPath.'";
 snowStorm.animationInterval = '.get_option('animationInterval').';
 snowStorm.flakeBottom = '.get_option('flakeBottom').';

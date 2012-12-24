@@ -12,7 +12,7 @@ All you need to do is upload the plugin folder to your plugin directory and acti
 
 **Update Dec 23, 2012**
 
-Updated snow falll script to work with Wibiya. Localized Settings Page. Moved the Settings Page under main Settings. Uses register script and enquescript.
+Updated snow falll script to work with Wibiya. Localized Settings Page. Moved the Settings Page under main Settings. Uses register script and enque script.
 
 **Update Jan 30, 2011**
 
