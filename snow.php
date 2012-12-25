@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Improved Let It Snow!
-Plugin URI: http://aentan.com/work/let-it-snow/
+Plugin URI: http://codemaster.fi/wordpress/plugins/let-it-snow/
 Description: Snow on your Wordpress Blog based on the DHTML Snowstorm script by <cite><a href="http://www.schillmania.com/projects/snowstorm/" title="DHTML Snowstorm">Scott Schiller</a>.</cite> with improvements by S H Mohanjith
 Version: 3.5
-Author: S H Mohanjith (Code Master Oy)
+Author: codemasteroy
 Author URI: http://codemaster.fi/
 */
 
