@@ -1,5 +1,5 @@
 === Improved Let It Snow! ===
-Contributors: S H Mohanjith (Code Master Oy), Aen
+Contributors: codemasteroy, mohanjith
 Donate link: http://twitter.com/codemasteroy
 Tags: snow, christmas, xmas, flakes, aen
 Requires at least: 1.5
@@ -40,19 +40,19 @@ Check that your theme is not applying styles to all `IMG` elements. If you are n
 
 = It's not working =
 
-If it does not work for you. Check that your theme has the `wp_head()` function call in header.php. If it does not, add `<? wp_head(); ?>` just before the closing `</head>` tag.
+If it does not work for you. Check that your theme has the `wp_footer()` function call in footer.php. If it does not, add `<?php wp_footer(); ?>` just before the closing `</body>` tag.
 If you have questions or need help, leave a comment here.
 
 = I have a suggestion! =
 
-Sure! Write to me at [hello@aentan.com](mailto:hello@aentan.com) with your suggestions.
+Sure! Write to us at [hello@codemaster.fi](mailto:hello@codemaster.fi) with your suggestions.
 
 == Notes & Credits ==
 
 The falling snow script used in this plugin is originally by [Scott Schiller](http://www.schillmania.com/projects/snowstorm/).
-This plugin is written by [Aen Tan](http://aentan.com/).
+This plugin is originally written by [Aen Tan](http://aentan.com/).
 
-You should follow me on Twitter *[here](http://twitter.com/Aen)*.
+You should follow us on Twitter *[here](http://twitter.com/codemasteroy)*.
 
 = Changelog =
 **3.5** [December 23, 2012] Updated snow fall script to work with Wibiya and localized settings page.
